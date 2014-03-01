@@ -135,10 +135,10 @@ fun! tmuxline#get_statusline_config(line, theme, separators)
   let cwin = a:line.cwin.build(a:theme, a:separators)
 
   return [
-        \ 'set -g status-left ' . shellescape(left),
-        \ 'set -g status-right ' . shellescape(right),
-        \ 'setw -g window-status-format ' .shellescape(win),
-        \ 'setw -g window-status-current-format ' . shellescape(cwin)]
+        \ 'set -g status-left ' . tmuxline#util#wrap_in_quotes(left),
+        \ 'set -g status-right ' . tmuxline#util#wrap_in_quotes(right),
+        \ 'setw -g window-status-format ' . tmuxline#util#wrap_in_quotes(win),
+        \ 'setw -g window-status-current-format ' . tmuxline#util#wrap_in_quotes(cwin)]
 endfun
 
 fun! tmuxline#get_global_config(line, theme)
